@@ -28,13 +28,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Component id="create" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <Component id="createButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="consult" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="consultButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="arraySizes" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,8 +49,9 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="create" alignment="3" max="32767" attributes="0"/>
-                  <Component id="consult" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="createButton" alignment="3" max="32767" attributes="0"/>
+                  <Component id="consultButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="arraySizes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
           </Group>
@@ -59,20 +64,30 @@
         <Property name="text" type="java.lang.String" value="SISTEMA ACAD&#xc9;MICO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="create">
+    <Component class="javax.swing.JButton" name="createButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="consult">
+    <Component class="javax.swing.JButton" name="consultButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="arraySizes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tama&#xf1;os"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="arraySizesActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

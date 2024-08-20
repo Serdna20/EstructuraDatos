@@ -5,9 +5,9 @@ import javax.swing.JOptionPane;
 
 public class Ventanaprincipal extends javax.swing.JFrame {
     
-    int arrayMenores[] = new int[5];
-    int arrayMayores[] = new int[5];
-    int arrayAdultosMayores[] = new int[5];
+    int arrayMenores[];
+    int arrayMayores[];
+    int arrayAdultosMayores[];
     int menor = 0;
     int mayor = 0;
     int adultomayor = 0;
@@ -29,25 +29,35 @@ public class Ventanaprincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        create = new javax.swing.JButton();
-        consult = new javax.swing.JButton();
+        createButton = new javax.swing.JButton();
+        consultButton = new javax.swing.JButton();
+        arraySizes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("SISTEMA ACADÉMICO");
 
-        create.setText("Crear");
-        create.addActionListener(new java.awt.event.ActionListener() {
+        createButton.setText("Crear");
+        createButton.setEnabled(false);
+        createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createActionPerformed(evt);
+                createButtonActionPerformed(evt);
             }
         });
 
-        consult.setText("Consultar");
-        consult.addActionListener(new java.awt.event.ActionListener() {
+        consultButton.setText("Consultar");
+        consultButton.setEnabled(false);
+        consultButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultActionPerformed(evt);
+                consultButtonActionPerformed(evt);
+            }
+        });
+
+        arraySizes.setText("Tamaños");
+        arraySizes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arraySizesActionPerformed(evt);
             }
         });
 
@@ -57,12 +67,15 @@ public class Ventanaprincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(create)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(createButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(consult)
-                    .addComponent(jLabel1))
-                .addGap(139, 139, 139))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(consultButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(arraySizes)))
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,21 +84,22 @@ public class Ventanaprincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(consult))
+                    .addComponent(createButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(consultButton)
+                    .addComponent(arraySizes))
                 .addGap(224, 224, 224))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         
         
         int edad = Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese su edad"));
         if (edad<18) {
             JOptionPane.showMessageDialog(rootPane,"Usted es menor de edad");
-            if (menor==5) {
+            if (menor == arrayMenores.length) {
                 JOptionPane.showMessageDialog(rootPane,"No hay espacio en memoria para almacenar");
             } else {            
                 arrayMenores[menor] = edad;
@@ -93,7 +107,7 @@ public class Ventanaprincipal extends javax.swing.JFrame {
             }
         } else if (edad<60) {
             JOptionPane.showMessageDialog(rootPane,"Usted es un mayor de edad");
-            if (mayor==5) {
+            if (mayor == arrayMayores.length) {
                 JOptionPane.showMessageDialog(rootPane,"No hay espacio en memoria para almacenar");
             } else {
                 arrayMayores[mayor] = edad;
@@ -101,18 +115,29 @@ public class Ventanaprincipal extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(rootPane,"Usted es un adulto mayor");
-            if (adultomayor==5) {
+            if (adultomayor == arrayAdultosMayores.length) {
                 JOptionPane.showMessageDialog(rootPane,"No hay espacio en memoria para almacenar");
             } else {
                 arrayAdultosMayores[adultomayor] = edad;
                 adultomayor++;
             }
         }
-    }//GEN-LAST:event_createActionPerformed
+        
+        
+    }//GEN-LAST:event_createButtonActionPerformed
 
-    private void consultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultActionPerformed
+    private void consultButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultButtonActionPerformed
         JOptionPane.showMessageDialog(rootPane,"Menores: "+Arrays.toString(arrayMenores)+"\nAdultos: "+Arrays.toString(arrayMayores)+"\nAdultos Mayores: "+Arrays.toString(arrayAdultosMayores));
-    }//GEN-LAST:event_consultActionPerformed
+    }//GEN-LAST:event_consultButtonActionPerformed
+
+    private void arraySizesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arraySizesActionPerformed
+        arrayMenores = new int[Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de menores:"))];
+        arrayMayores = new int[Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de mayores:"))];
+        arrayAdultosMayores = new int[Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de adultos mayores:"))];
+        
+        createButton.setEnabled(true);
+        consultButton.setEnabled(true);
+    }//GEN-LAST:event_arraySizesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,8 +175,9 @@ public class Ventanaprincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton consult;
-    private javax.swing.JButton create;
+    private javax.swing.JButton arraySizes;
+    private javax.swing.JButton consultButton;
+    private javax.swing.JButton createButton;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
