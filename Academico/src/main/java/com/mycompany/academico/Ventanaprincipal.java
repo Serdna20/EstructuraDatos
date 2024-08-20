@@ -96,7 +96,7 @@ public class Ventanaprincipal extends javax.swing.JFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         
         
-        int edad = Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese su edad"));
+        int edad = validateIntInput(JOptionPane.showInputDialog(rootPane, "Ingrese su edad"));
         if (edad<18) {
             JOptionPane.showMessageDialog(rootPane,"Usted es menor de edad");
             if (menor == arrayMenores.length) {
@@ -131,9 +131,9 @@ public class Ventanaprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_consultButtonActionPerformed
 
     private void arraySizesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arraySizesActionPerformed
-        arrayMenores = new int[Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de menores:"))];
-        arrayMayores = new int[Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de mayores:"))];
-        arrayAdultosMayores = new int[Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de adultos mayores:"))];
+        arrayMenores = new int[validateIntInput(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de menores:"))];
+        arrayMayores = new int[validateIntInput(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de mayores:"))];
+        arrayAdultosMayores = new int[validateIntInput(JOptionPane.showInputDialog(rootPane, "Ingrese cantidad de adultos mayores:"))];
         
         createButton.setEnabled(true);
         consultButton.setEnabled(true);
@@ -174,6 +174,25 @@ public class Ventanaprincipal extends javax.swing.JFrame {
         });
     }
 
+    public int validateIntInput(String str) {
+        while (isNumeric(str)==false) {
+            str = JOptionPane.showInputDialog(rootPane, "Ingrese un número ENTERO válido (sin espacios):");
+        }
+        return Integer.parseInt(str);
+    }
+    
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton arraySizes;
     private javax.swing.JButton consultButton;
