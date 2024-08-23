@@ -47,11 +47,13 @@ public class Menu {
         return Arrays.toString(ventasDia);
     }
     
-    private int findMaxIndex() {
+    private int findMaxIndex(int[] array) {
+        int maxIndex = 0
         for (int i = 0; i < platos.length; i++) {
             String plato = platos[i];
             
         }
+        return maxIndex;
     }
     
     private int validateIntInput(String str) {
