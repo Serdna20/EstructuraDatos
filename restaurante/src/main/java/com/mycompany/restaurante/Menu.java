@@ -36,11 +36,12 @@ public class Menu {
     
     public String analizarInfo() {
         // Ventas dia posee las ventas de cada día en total
+        String returnString = "";
         int[] ventasDia = new int[6];
         String[] dias = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado"};
         for (int plato = 0; plato < platos.length; plato++) {
             for (int dia = 0; dia < 6; dia++) {
-                System.out.println(datos[dia][plato]);
+                // System.out.println(datos[dia][plato]);
                 ventasDia[dia] += datos[dia][plato];                
             }
         }
@@ -57,37 +58,44 @@ public class Menu {
         // GENERALES
         // Platos vendidos en la semana
         int platosVendidos = sumValues(ventasDia);
-        System.out.println("Platos vendidos en la semana: "+platosVendidos);
+        returnString += "-- Información General --\n";
+        returnString += "· Platos vendidos en la semana: "+platosVendidos+"\n";
         
         // Promedio de platos vendidos cada día
         String promedioPlatos = String.format("%.1f", (double) platosVendidos/dias.length);
-        System.out.println("Promedio de platos vendidos cada día: "+promedioPlatos);
+        returnString += "· Promedio de platos vendidos cada día: "+promedioPlatos+"\n";
         
         // Día más vendido
-        System.out.println("Día más vendido: "+dias[findMaxIndex(ventasDia)]);
-        
+        returnString += "· Día más vendido: "+dias[findMaxIndex(ventasDia)]+" con "+ventasDia[findMaxIndex(ventasDia)]+" ventas\n";
+        String porcentajeDia = String.format("%.1f", (double) ventasDia[findMaxIndex(ventasDia)]*100/platosVendidos);
+        returnString += "· El día más vendido representa un "+porcentajeDia+"% de las ventas"+"\n";
         // Día menos vendido
-        System.out.println("Día menos vendido: "+dias[findMinIndex(ventasDia)]);
+        returnString += "· Día menos vendido: "+dias[findMinIndex(ventasDia)]+" con "+ventasDia[findMinIndex(ventasDia)]+" ventas\n";
         
         // Plato más vendido
-        System.out.println("El plato más vendido fue: "+platos[findMaxIndex(ventasPlato)]+" con "+ventasPlato[findMaxIndex(ventasPlato)]+" ventas esta semana.");
+        returnString += "· El plato más vendido fue: "+platos[findMaxIndex(ventasPlato)]+" con "+ventasPlato[findMaxIndex(ventasPlato)]+" ventas esta semana"+"\n";
         
         // Plato menos vendido
-        System.out.println("El plato menos vendido fue: "+platos[findMinIndex(ventasPlato)]+" con "+ventasPlato[findMinIndex(ventasPlato)]+" ventas esta semana.");
+        returnString += "· El plato menos vendido fue: "+platos[findMinIndex(ventasPlato)]+" con "+ventasPlato[findMinIndex(ventasPlato)]+" ventas esta semana"+"\n\n";
         
         // PARTICULARES
         // Cada plato vendido en la semana
         
+        returnString += "-- Información particular --\n\n";
+        
         for (int i = 0; i < platos.length; i++) {
-            int j = ventasPlato[i];
-            
+            returnString += "· El plato "+platos[i]+" tuvo "+ventasPlato[i]+" ventas esta semana\n";
+            int[] ventasDiarias = new int[dias.length];
+            for (int dia = 0; dia < dias.length; dia++) {
+                ventasDiarias[dia] = datos[dia][i];                
+            }
+            returnString += "· El día que más se vendió el plato "+platos[i]+" fue el "+dias[ findMaxIndex(ventasDiarias)]+"\n";
+            returnString += "· El día que menos se vendió el plato "+platos[i]+" fue el "+dias[ findMinIndex(ventasDiarias)]+"\n";
+            String porcentaje = String.format("%.1f", (double) ventasPlato[i]*100/platosVendidos);
+            returnString += "· El porcentaje de ventas que representa el plato "+platos[i]+" es del "+porcentaje+"%"+"\n\n";
         }
         
-        
-        
-        
-        
-        return Arrays.toString(ventasDia);
+        return returnString;
     }
     
     private int findMaxIndex(int[] array) {
