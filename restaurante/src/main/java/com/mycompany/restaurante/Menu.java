@@ -1,24 +1,23 @@
 package com.mycompany.restaurante;
 
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class Menu {
-    String platos[];
+    Platos platos[];
     int datos[][];
     
     public void crearMenu(int cantidad) {
-        platos = new String[cantidad];
+        platos = new Platos[cantidad];
         
         for (int i = 0; i < platos.length; i++) {
-            platos[i] = JOptionPane.showInputDialog("Ingrese el nombre del plato #"+(i+1));            
+            platos[i] = new Platos(JOptionPane.showInputDialog("Ingrese el nombre del plato #"+(i+1)), validateIntInput(JOptionPane.showInputDialog("Ingrese el precio del plato:")));
         }
     }
     
     public String obtenerMenu() {
         String menuString = "Menú: \n";
-        for (String plato : platos) {
-            menuString += "· " + plato + "\n";            
+        for (Platos plato : platos) {
+            menuString += "· " + plato.getNombre() + "   $"+plato.getPrecio()+"\n";            
         }
         menuString += "Este menú cuenta con "+platos.length+" plato(s)";
         return menuString;
@@ -29,20 +28,22 @@ public class Menu {
         String[] dias = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado"};
         for (int dia = 0; dia < 6; dia++) {
             for (int plato = 0; plato < platos.length; plato++) {
-                datos[dia][plato] = validateIntInput(JOptionPane.showInputDialog("Ingrese las ventas de "+platos[plato]+" en el día "+dias[dia]));                
+                datos[dia][plato] = validateIntInput(JOptionPane.showInputDialog("Ingrese las ventas de "+platos[plato].getNombre()+" en el día "+dias[dia]));                
             }
         }
     }
     
     public String analizarInfo() {
         // Ventas dia posee las ventas de cada día en total
+        int gananciaTotal = 0;
         String returnString = "";
         int[] ventasDia = new int[6];
         String[] dias = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado"};
         for (int plato = 0; plato < platos.length; plato++) {
             for (int dia = 0; dia < 6; dia++) {
                 // System.out.println(datos[dia][plato]);
-                ventasDia[dia] += datos[dia][plato];                
+                ventasDia[dia] += datos[dia][plato];
+                gananciaTotal += datos[dia][plato]*platos[plato].getPrecio();
             }
         }
         
@@ -60,6 +61,7 @@ public class Menu {
         int platosVendidos = sumValues(ventasDia);
         returnString += "-- Información General --\n";
         returnString += "· Platos vendidos en la semana: "+platosVendidos+"\n";
+        returnString += "· Ganancia total: $"+gananciaTotal+"\n";
         
         // Promedio de platos vendidos cada día
         String promedioPlatos = String.format("%.1f", (double) platosVendidos/dias.length);
@@ -73,10 +75,10 @@ public class Menu {
         returnString += "· Día menos vendido: "+dias[findMinIndex(ventasDia)]+" con "+ventasDia[findMinIndex(ventasDia)]+" ventas\n";
         
         // Plato más vendido
-        returnString += "· El plato más vendido fue: "+platos[findMaxIndex(ventasPlato)]+" con "+ventasPlato[findMaxIndex(ventasPlato)]+" ventas esta semana"+"\n";
+        returnString += "· El plato más vendido fue: "+platos[findMaxIndex(ventasPlato)].getNombre()+" con "+ventasPlato[findMaxIndex(ventasPlato)]+" ventas esta semana"+"\n";
         
         // Plato menos vendido
-        returnString += "· El plato menos vendido fue: "+platos[findMinIndex(ventasPlato)]+" con "+ventasPlato[findMinIndex(ventasPlato)]+" ventas esta semana"+"\n\n";
+        returnString += "· El plato menos vendido fue: "+platos[findMinIndex(ventasPlato)].getNombre()+" con "+ventasPlato[findMinIndex(ventasPlato)]+" ventas esta semana"+"\n\n";
         
         // PARTICULARES
         // Cada plato vendido en la semana
@@ -84,15 +86,15 @@ public class Menu {
         returnString += "-- Información particular --\n\n";
         
         for (int i = 0; i < platos.length; i++) {
-            returnString += "· El plato "+platos[i]+" tuvo "+ventasPlato[i]+" ventas esta semana\n";
+            returnString += "· El plato "+platos[i].getNombre()+" tuvo "+ventasPlato[i]+" ventas esta semana\n";
             int[] ventasDiarias = new int[dias.length];
             for (int dia = 0; dia < dias.length; dia++) {
                 ventasDiarias[dia] = datos[dia][i];                
             }
-            returnString += "· El día que más se vendió el plato "+platos[i]+" fue el "+dias[ findMaxIndex(ventasDiarias)]+"\n";
-            returnString += "· El día que menos se vendió el plato "+platos[i]+" fue el "+dias[ findMinIndex(ventasDiarias)]+"\n";
+            returnString += "· El día que más se vendió el plato "+platos[i].getNombre()+" fue el "+dias[ findMaxIndex(ventasDiarias)]+"\n";
+            returnString += "· El día que menos se vendió el plato "+platos[i].getNombre()+" fue el "+dias[ findMinIndex(ventasDiarias)]+"\n";
             String porcentaje = String.format("%.1f", (double) ventasPlato[i]*100/platosVendidos);
-            returnString += "· El porcentaje de ventas que representa el plato "+platos[i]+" es del "+porcentaje+"%"+"\n\n";
+            returnString += "· El porcentaje de ventas que representa el plato "+platos[i].getNombre()+" es del "+porcentaje+"%"+"\n\n";
         }
         
         return returnString;
