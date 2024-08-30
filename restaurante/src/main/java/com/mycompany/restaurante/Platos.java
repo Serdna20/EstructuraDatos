@@ -11,11 +11,22 @@ package com.mycompany.restaurante;
 public class Platos {
 
     private int precio;
+    private int costo;
     private String nombre;
+    private int ganancia;
 
-    public Platos(String nombre, int precio) {
-        this.precio = precio;
+    public Platos(String nombre, int precio, int costo) {
         this.nombre = nombre;
+        
+        if (costo > precio) {
+            this.precio = costo;
+            this.costo = precio;
+        }
+        else {
+            this.precio = precio;
+            this.costo = costo;
+        }        
+        this.ganancia = this.precio-this.costo;
     }
     
     public void setPrecio(int precio) {
@@ -33,5 +44,8 @@ public class Platos {
     public String getNombre() {
         return nombre;
     }
-    
+
+    public int getGanancia() {
+        return ganancia;
+    }
 }

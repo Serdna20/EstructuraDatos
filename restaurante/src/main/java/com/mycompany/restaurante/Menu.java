@@ -10,14 +10,16 @@ public class Menu {
         platos = new Platos[cantidad];
         
         for (int i = 0; i < platos.length; i++) {
-            platos[i] = new Platos(JOptionPane.showInputDialog("Ingrese el nombre del plato #"+(i+1)), validateIntInput(JOptionPane.showInputDialog("Ingrese el precio del plato:")));
+            platos[i] = new Platos(JOptionPane.showInputDialog("Ingrese el nombre del plato #"+(i+1)),
+                    validateIntInput(JOptionPane.showInputDialog("Ingrese el precio de venta del plato:")),
+                     validateIntInput(JOptionPane.showInputDialog("Ingrese el costo de producción del plato:")));
         }
     }
     
     public String obtenerMenu() {
         String menuString = "Menú: \n";
         for (Platos plato : platos) {
-            menuString += "· " + plato.getNombre() + "   $"+plato.getPrecio()+"\n";            
+            menuString += "· " + plato.getNombre() + " - $"+plato.getPrecio()+"\n";            
         }
         menuString += "Este menú cuenta con "+platos.length+" plato(s)";
         return menuString;
@@ -43,7 +45,7 @@ public class Menu {
             for (int dia = 0; dia < 6; dia++) {
                 // System.out.println(datos[dia][plato]);
                 ventasDia[dia] += datos[dia][plato];
-                gananciaTotal += datos[dia][plato]*platos[plato].getPrecio();
+                gananciaTotal += datos[dia][plato]*platos[plato].getGanancia();
             }
         }
         
@@ -52,7 +54,7 @@ public class Menu {
         int[] ventasPlato = new int[platos.length];
         for (int plato = 0; plato < platos.length; plato++) {
             for (int dia = 0; dia < 6; dia++) {
-                gananciasPlato[plato] += (int) datos[dia][plato] * platos[plato].getPrecio();
+                gananciasPlato[plato] += (int) datos[dia][plato] * platos[plato].getGanancia();
                 ventasPlato[plato] += datos[dia][plato];                
             }
             // System.out.println("El plato "+platos[plato]+" tuvo "+ventasPlato[plato]+" ventas esta semana");
