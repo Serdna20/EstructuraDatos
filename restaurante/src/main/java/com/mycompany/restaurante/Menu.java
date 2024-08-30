@@ -62,9 +62,9 @@ public class Menu {
         // Platos vendidos en la semana
         int platosVendidos = sumValues(ventasDia);
         returnString += "-- Información General --\n";
-        returnString += "· Platos vendidos en la semana: "+platosVendidos+"\n";
-        returnString += "· Plato con más ganancia: "+platos[findMaxIndex(gananciasPlato)].getNombre()+" con ganancia de $"+gananciasPlato[findMaxIndex(gananciasPlato)]+"\n";
+        returnString += "· Platos vendidos en la semana: "+platosVendidos+"\n";        
         returnString += "· Ganancia total: $"+gananciaTotal+"\n";
+        returnString += "· Plato con más ganancia: "+platos[findMaxIndex(gananciasPlato)].getNombre()+" con ganancia de $"+gananciasPlato[findMaxIndex(gananciasPlato)]+"\n";
         
         // Promedio de platos vendidos cada día
         String promedioPlatos = String.format("%.1f", (double) platosVendidos/dias.length);
@@ -97,7 +97,9 @@ public class Menu {
             returnString += "· El día que más se vendió el plato "+platos[i].getNombre()+" fue el "+dias[ findMaxIndex(ventasDiarias)]+"\n";
             returnString += "· El día que menos se vendió el plato "+platos[i].getNombre()+" fue el "+dias[ findMinIndex(ventasDiarias)]+"\n";
             String porcentaje = String.format("%.1f", (double) ventasPlato[i]*100/platosVendidos);
+            String porcentajeGanancias = String.format("%.1f", (double) gananciasPlato[i]*100/gananciaTotal);
             returnString += "· Las ganancias obtenidas por el plato "+platos[i].getNombre()+" fueron de $"+gananciasPlato[i]+"\n";
+            returnString += "· El porcentaje de ganancias que representa el plato "+platos[i].getNombre()+" fue del "+porcentajeGanancias+"%\n";
             returnString += "· El porcentaje de ventas que representa el plato "+platos[i].getNombre()+" es del "+porcentaje+"%"+"\n\n";
         }
         
