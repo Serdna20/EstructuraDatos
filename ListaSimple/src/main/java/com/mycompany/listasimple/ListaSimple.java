@@ -55,6 +55,30 @@ public class ListaSimple {
         }
     }
     
+    public void insertarEnIndice(String nombre, int age, float averageGrade, int indice) {
+        Nodo nuevo = new Nodo();
+        nuevo.setName(nombre);
+        nuevo.setAge(age);
+        nuevo.setAverageGrade(averageGrade);
+        nuevo.setEnlace(null);
+        
+        int posicion = 1;        
+        Nodo temporal = inicio;
+        Nodo siguiente = null;
+        // Cambia de posición iniciando en la 1
+        while(temporal.getEnlace()!=null) {
+            if (posicion==indice) {
+                siguiente = temporal.getEnlace();
+                break;
+            }
+            temporal = temporal.getEnlace();
+            posicion++;
+        }
+        temporal.setEnlace(nuevo);
+        nuevo.setEnlace(siguiente);
+        
+    }
+    
     public void consultar() {
     
         // Ubicarme al nodo inicial para recorrer la lista

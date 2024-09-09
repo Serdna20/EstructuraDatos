@@ -37,6 +37,9 @@ public class Menu extends javax.swing.JFrame {
         averageField = new javax.swing.JTextField();
         ageField = new javax.swing.JTextField();
         insertFinal = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        indiceField = new javax.swing.JTextField();
+        indiceButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +90,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("Indice");
+
+        indiceField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indiceFieldActionPerformed(evt);
+            }
+        });
+
+        indiceButton.setText("Insertar en indice");
+        indiceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indiceButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,19 +118,22 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombreField, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(nombreField, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(ageField)
-                    .addComponent(averageField))
+                    .addComponent(averageField)
+                    .addComponent(indiceField))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(createList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(consult, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(insertFinal))
-                .addGap(45, 45, 45))
+                    .addComponent(insertFinal)
+                    .addComponent(indiceButton))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +160,12 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(averageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(insertFinal)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(indiceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(indiceButton))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,6 +194,17 @@ public class Menu extends javax.swing.JFrame {
     private void insertFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertFinalActionPerformed
         objLista.insertarFinal(nombreField.getText(), Integer.parseInt(ageField.getText()), Float.parseFloat(averageField.getText()));
     }//GEN-LAST:event_insertFinalActionPerformed
+
+    private void indiceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indiceFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_indiceFieldActionPerformed
+
+    private void indiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indiceButtonActionPerformed
+        objLista.insertarEnIndice(nombreField.getText(),
+                Integer.parseInt(ageField.getText()),
+                Float.parseFloat(averageField.getText()),
+                Integer.parseInt(indiceField.getText()));
+    }//GEN-LAST:event_indiceButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,11 +246,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField averageField;
     private javax.swing.JButton consult;
     private javax.swing.JButton createList;
+    private javax.swing.JButton indiceButton;
+    private javax.swing.JTextField indiceField;
     private javax.swing.JButton insertFinal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nombreField;
     // End of variables declaration//GEN-END:variables
 }
