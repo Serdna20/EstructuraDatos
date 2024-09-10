@@ -91,6 +91,43 @@ public class ListaSimple {
         
     }
     
+    public void insertarAntesDeIndice(String nombre, int age, float averageGrade, int indice) {
+        Nodo nuevo = new Nodo();
+        nuevo.setName(nombre);
+        nuevo.setAge(age);
+        nuevo.setAverageGrade(averageGrade);
+        nuevo.setEnlace(null);
+        boolean indiceEncontrado = false;
+        int posicion = 1;        
+        Nodo anterior = inicio;
+        Nodo siguiente = null;
+        // Cambia de posición iniciando en la 1
+        if (indice <= 0) {
+            JOptionPane.showMessageDialog(null, "El indice debe ser un númeo mayor a cero.");
+        }
+        else if (indice == 1) {
+            insertarInicio(nombre, age, averageGrade);
+        }
+        else {
+            while(anterior!=null) {
+                if (posicion+1==indice) {
+                    siguiente = anterior.getEnlace();
+                    indiceEncontrado = true;
+                    break;
+                }
+                anterior = anterior.getEnlace();
+                posicion++;
+            }
+            if (indiceEncontrado) {
+                anterior.setEnlace(nuevo);
+                nuevo.setEnlace(siguiente);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "No se encontró el indice ingresado.");
+            }
+        }
+    }
+    
     public void insertarEnNombre(String nombre, int age, float averageGrade, String referencia) {
         Nodo nuevo = new Nodo();
         nuevo.setName(nombre);
