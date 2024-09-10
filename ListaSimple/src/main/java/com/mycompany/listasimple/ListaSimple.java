@@ -70,7 +70,7 @@ public class ListaSimple {
             JOptionPane.showMessageDialog(null, "El indice debe ser un númeo mayor a cero.");
         }
         else {
-            while(anterior.getEnlace()!=null) {
+            while(anterior!=null) {
                 if (posicion==indice) {
                     siguiente = anterior.getEnlace();
                     indiceEncontrado = true;
