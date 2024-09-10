@@ -96,6 +96,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         indiceButton.setText("Insertar después de indice");
+        indiceButton.setEnabled(false);
         indiceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 indiceButtonActionPerformed(evt);
@@ -105,6 +106,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel6.setText("Datos del nodo");
 
         nombreButton.setText("Insertar después de nombre");
+        nombreButton.setEnabled(false);
         nombreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreButtonActionPerformed(evt);
@@ -112,8 +114,10 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jLabel5.setText("Opciones adicionales de insertado");
+        jLabel5.setEnabled(false);
 
         ageButton.setText("Insertar después de edad");
+        ageButton.setEnabled(false);
         ageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ageButtonActionPerformed(evt);
@@ -121,6 +125,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         averageButton.setText("Insertar después de promedio");
+        averageButton.setEnabled(false);
         averageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 averageButtonActionPerformed(evt);
@@ -216,6 +221,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void createListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createListActionPerformed
         objLista.insertarInicio(nombreField.getText(), Integer.parseInt(ageField.getText()), Float.parseFloat(averageField.getText()));
+        indiceButton.setEnabled(true);
+        ageButton.setEnabled(true);
+        nombreButton.setEnabled(true);
+        averageButton.setEnabled(true);
+        jLabel5.setEnabled(true);
     }//GEN-LAST:event_createListActionPerformed
 
     private void consultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultActionPerformed
@@ -236,6 +246,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void insertFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertFinalActionPerformed
         objLista.insertarFinal(nombreField.getText(), Integer.parseInt(ageField.getText()), Float.parseFloat(averageField.getText()));
+        indiceButton.setEnabled(true);
+        ageButton.setEnabled(true);
+        nombreButton.setEnabled(true);
+        averageButton.setEnabled(true);
+        jLabel5.setEnabled(true);
     }//GEN-LAST:event_insertFinalActionPerformed
 
     private void indiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indiceButtonActionPerformed
@@ -303,7 +318,7 @@ public class Menu extends javax.swing.JFrame {
     
     public int validateIntInput(String str) {
         while (isNumber(str)==false) {
-            str = JOptionPane.showInputDialog("Ingrese un número ENTERO válido (sin espacios):");
+            str = JOptionPane.showInputDialog("Ingrese un número válido mayor a cero:");
         }
         return Integer.parseInt(str);
     }

@@ -66,23 +66,28 @@ public class ListaSimple {
         Nodo anterior = inicio;
         Nodo siguiente = null;
         // Cambia de posición iniciando en la 1
-        while(anterior.getEnlace()!=null) {
-            if (posicion==indice) {
-                siguiente = anterior.getEnlace();
-                indiceEncontrado = true;
-                break;
-            }
-            anterior = anterior.getEnlace();
-            posicion++;
-        }
-        if (indiceEncontrado) {
-            anterior.setEnlace(nuevo);
-            nuevo.setEnlace(siguiente);
+        if (indice <= 0) {
+            JOptionPane.showMessageDialog(null, "El indice debe ser un númeo mayor a cero.");
         }
         else {
-            JOptionPane.showMessageDialog(null, "No se encontró el indice ingresado.");
+            while(anterior.getEnlace()!=null) {
+                if (posicion==indice) {
+                    siguiente = anterior.getEnlace();
+                    indiceEncontrado = true;
+                    break;
+                }
+                anterior = anterior.getEnlace();
+                posicion++;
+            }
+            if (indiceEncontrado) {
+                anterior.setEnlace(nuevo);
+                nuevo.setEnlace(siguiente);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "No se encontró el indice ingresado.");
+            }
         }
-        
+                
         
     }
     

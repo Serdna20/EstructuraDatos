@@ -191,6 +191,7 @@
     <Component class="javax.swing.JButton" name="indiceButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Insertar despu&#xe9;s de indice"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indiceButtonActionPerformed"/>
@@ -204,6 +205,7 @@
     <Component class="javax.swing.JButton" name="nombreButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Insertar despu&#xe9;s de nombre"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreButtonActionPerformed"/>
@@ -212,11 +214,13 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="text" type="java.lang.String" value="Opciones adicionales de insertado"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="ageButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Insertar despu&#xe9;s de edad"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ageButtonActionPerformed"/>
@@ -225,6 +229,7 @@
     <Component class="javax.swing.JButton" name="averageButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Insertar despu&#xe9;s de promedio"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="averageButtonActionPerformed"/>
