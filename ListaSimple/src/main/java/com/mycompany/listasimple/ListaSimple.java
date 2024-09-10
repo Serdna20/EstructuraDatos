@@ -63,18 +63,18 @@ public class ListaSimple {
         nuevo.setEnlace(null);
         
         int posicion = 1;        
-        Nodo temporal = inicio;
+        Nodo anterior = inicio;
         Nodo siguiente = null;
         // Cambia de posición iniciando en la 1
-        while(temporal.getEnlace()!=null) {
+        while(anterior.getEnlace()!=null) {
             if (posicion==indice) {
-                siguiente = temporal.getEnlace();
+                siguiente = anterior.getEnlace();
                 break;
             }
-            temporal = temporal.getEnlace();
+            anterior = anterior.getEnlace();
             posicion++;
         }
-        temporal.setEnlace(nuevo);
+        anterior.setEnlace(nuevo);
         nuevo.setEnlace(siguiente);
         
     }
