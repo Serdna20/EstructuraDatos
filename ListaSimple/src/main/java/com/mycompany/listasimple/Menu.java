@@ -46,6 +46,7 @@ public class Menu extends javax.swing.JFrame {
         ageButton = new javax.swing.JButton();
         averageButton = new javax.swing.JButton();
         beforeIndexButton = new javax.swing.JButton();
+        deleteIndex = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,6 +142,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        deleteIndex.setText("Eliminar Indice");
+        deleteIndex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteIndexActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,7 +168,9 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(beforeIndexButton)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(beforeIndexButton)
+                                .addComponent(deleteIndex))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -219,10 +229,15 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(indiceButton)
                     .addComponent(beforeIndexButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ageButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ageButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteIndex)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(averageButton)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -302,6 +317,10 @@ public class Menu extends javax.swing.JFrame {
                 validateIntInput(JOptionPane.showInputDialog("Ingrese el indice:")));
     }//GEN-LAST:event_beforeIndexButtonActionPerformed
 
+    private void deleteIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIndexActionPerformed
+        objLista.eliminarIndice(validateIntInput(JOptionPane.showInputDialog("Ingrese el indice:")));
+    }//GEN-LAST:event_deleteIndexActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +383,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton beforeIndexButton;
     private javax.swing.JButton consult;
     private javax.swing.JButton createList;
+    private javax.swing.JButton deleteIndex;
     private javax.swing.JButton indiceButton;
     private javax.swing.JButton insertFinal;
     private javax.swing.JLabel jLabel1;

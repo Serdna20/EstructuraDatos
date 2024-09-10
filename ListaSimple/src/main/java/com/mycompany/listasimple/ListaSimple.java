@@ -128,6 +128,64 @@ public class ListaSimple {
         }
     }
     
+    public void eliminarIndice(int indice) {
+        int posicion = 1;
+        boolean indiceEncontrado = false;
+        
+        Nodo anterior = inicio;        
+        Nodo siguiente = null;
+        
+        if (indice == 1) {
+            inicio = inicio.getEnlace();
+            return;
+        }
+        
+        while(anterior!=null) {
+            if (posicion+1==indice) {
+                siguiente = anterior.getEnlace().getEnlace();
+                indiceEncontrado = true;
+                break;
+            }
+            anterior = anterior.getEnlace();
+            posicion++;
+        }
+        if (indiceEncontrado) {
+            anterior.setEnlace(siguiente);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se encontró el indice ingresado.");
+        }        
+    }
+    
+    public void eliminarPorNombre(String referencia) {
+        int posicion = 1;
+        Nodo anterior = inicio;        
+        Nodo siguiente = null;
+        
+        while(anterior!=null) {
+            if (anterior.getName().equals(referencia)) {
+                if (posicion == 1) {
+                    
+                    // Determinar quien va a ser inicio
+                    Nodo nuevoInicio = null;
+                    // Recorre hasta encontrar la primera variable que no se llama como la condicion
+                    anterior = anterior.getEnlace();
+                    while(anterior.getName().equals(referencia)) {
+                        anterior = anterior.getEnlace();
+                    }
+                    nuevoInicio = anterior;
+                }
+                else {
+                
+                }
+                siguiente = anterior.getEnlace();
+                
+            }
+            anterior = anterior.getEnlace();
+            posicion++;
+        }
+    }
+    
     public void insertarEnNombre(String nombre, int age, float averageGrade, String referencia) {
         Nodo nuevo = new Nodo();
         nuevo.setName(nombre);
