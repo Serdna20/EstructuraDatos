@@ -242,7 +242,7 @@ public class Menu extends javax.swing.JFrame {
         objLista.insertarEnIndice(nombreField.getText(),
                 Integer.parseInt(ageField.getText()),
                 Float.parseFloat(averageField.getText()),
-                Integer.parseInt(JOptionPane.showInputDialog("Ingrese el indice (se agregara entre este indice y el siguiente):")));
+                validateIntInput(JOptionPane.showInputDialog("Ingrese el indice:")));
     }//GEN-LAST:event_indiceButtonActionPerformed
 
     private void nombreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreButtonActionPerformed
@@ -256,7 +256,7 @@ public class Menu extends javax.swing.JFrame {
         objLista.insertarEnEdad(nombreField.getText(),
                 Integer.parseInt(ageField.getText()),
                 Float.parseFloat(averageField.getText()), 
-                Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad:")));
+                validateIntInput(JOptionPane.showInputDialog("Ingrese la edad:")));
     }//GEN-LAST:event_ageButtonActionPerformed
 
     private void averageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_averageButtonActionPerformed
@@ -299,6 +299,25 @@ public class Menu extends javax.swing.JFrame {
                 new Menu().setVisible(true);
             }
         });
+    }
+    
+    public int validateIntInput(String str) {
+        while (isNumber(str)==false) {
+            str = JOptionPane.showInputDialog("Ingrese un número ENTERO válido (sin espacios):");
+        }
+        return Integer.parseInt(str);
+    }
+    
+    public static boolean isNumber(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

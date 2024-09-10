@@ -61,7 +61,7 @@ public class ListaSimple {
         nuevo.setAge(age);
         nuevo.setAverageGrade(averageGrade);
         nuevo.setEnlace(null);
-        
+        boolean indiceEncontrado = false;
         int posicion = 1;        
         Nodo anterior = inicio;
         Nodo siguiente = null;
@@ -69,13 +69,20 @@ public class ListaSimple {
         while(anterior.getEnlace()!=null) {
             if (posicion==indice) {
                 siguiente = anterior.getEnlace();
+                indiceEncontrado = true;
                 break;
             }
             anterior = anterior.getEnlace();
             posicion++;
         }
-        anterior.setEnlace(nuevo);
-        nuevo.setEnlace(siguiente);
+        if (indiceEncontrado) {
+            anterior.setEnlace(nuevo);
+            nuevo.setEnlace(siguiente);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se encontró el indice ingresado.");
+        }
+        
         
     }
     
