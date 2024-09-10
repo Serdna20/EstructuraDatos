@@ -159,29 +159,34 @@ public class ListaSimple {
     
     public void eliminarPorNombre(String referencia) {
         int posicion = 1;
-        Nodo anterior = inicio;        
+        Nodo anterior = inicio;
         Nodo siguiente = null;
         
-        while(anterior!=null) {
-            if (anterior.getName().equals(referencia)) {
-                if (posicion == 1) {
-                    
-                    // Determinar quien va a ser inicio
-                    Nodo nuevoInicio = null;
-                    // Recorre hasta encontrar la primera variable que no se llama como la condicion
-                    anterior = anterior.getEnlace();
-                    while(anterior.getName().equals(referencia)) {
-                        anterior = anterior.getEnlace();
-                    }
-                    nuevoInicio = anterior;
+        while (anterior!=null) {
+            
+            if (siguiente == null && posicion == 1 && anterior.getName().equals(referencia)) {
+                Nodo enlaceTemporal = anterior.getEnlace();
+                while(enlaceTemporal.getName().equals(referencia)) {
+                    enlaceTemporal = enlaceTemporal.getEnlace();
                 }
-                else {
-                
-                }
-                siguiente = anterior.getEnlace();
-                
+                inicio = enlaceTemporal;
             }
+            
+            if (siguiente != null && siguiente.getName().equals(referencia)) {
+                Nodo enlaceTemporal = anterior.getEnlace();
+                while(enlaceTemporal!=null && enlaceTemporal.getName().equals(referencia)) {
+                    enlaceTemporal = enlaceTemporal.getEnlace();
+                }
+                anterior.setEnlace(enlaceTemporal);
+            }
+            
+        
             anterior = anterior.getEnlace();
+            if (anterior==null) {
+                // Llegué al final de la lista
+                break;
+            }
+            siguiente = anterior.getEnlace();
             posicion++;
         }
     }
