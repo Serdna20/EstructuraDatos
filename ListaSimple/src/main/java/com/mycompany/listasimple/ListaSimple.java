@@ -101,7 +101,7 @@ public class ListaSimple {
         Nodo anterior = inicio;
         Nodo siguiente = null;
         // Recorre el nodo
-        while(anterior.getEnlace()!=null) {
+        while(anterior!=null) {
             if (anterior.getName().equals(referencia)) {
                 siguiente = anterior.getEnlace();
                 nombreEncontrado = true;
@@ -130,7 +130,7 @@ public class ListaSimple {
         Nodo anterior = inicio;
         Nodo siguiente = null;
         // Recorre el nodo
-        while(anterior.getEnlace()!=null) {
+        while(anterior!=null) {
             if (anterior.getAge() == referencia) {
                 siguiente = anterior.getEnlace();
                 edadEncontrada = true;
@@ -159,7 +159,7 @@ public class ListaSimple {
         Nodo anterior = inicio;
         Nodo siguiente = null;
         // Recorre el nodo
-        while(anterior.getEnlace()!=null) {
+        while(anterior!=null) {
             if (anterior.getAge() == referencia) {
                 siguiente = anterior.getEnlace();
                 promedioEncontrado = true;
