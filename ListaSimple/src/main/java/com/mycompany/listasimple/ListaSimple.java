@@ -79,6 +79,93 @@ public class ListaSimple {
         
     }
     
+    public void insertarEnNombre(String nombre, int age, float averageGrade, String referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setName(nombre);
+        nuevo.setAge(age);
+        nuevo.setAverageGrade(averageGrade);
+        nuevo.setEnlace(null);
+        boolean nombreEncontrado = false;
+        Nodo anterior = inicio;
+        Nodo siguiente = null;
+        // Recorre el nodo
+        while(anterior.getEnlace()!=null) {
+            if (anterior.getName().equals(referencia)) {
+                siguiente = anterior.getEnlace();
+                nombreEncontrado = true;
+                break;
+            }
+            anterior = anterior.getEnlace();
+        }
+        
+        if (nombreEncontrado) {
+            anterior.setEnlace(nuevo);
+            nuevo.setEnlace(siguiente);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se encontró el nombre ingresado.");
+        }
+        
+    }
+    
+    public void insertarEnEdad(String nombre, int age, float averageGrade, int referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setName(nombre);
+        nuevo.setAge(age);
+        nuevo.setAverageGrade(averageGrade);
+        nuevo.setEnlace(null);
+        boolean edadEncontrada = false;
+        Nodo anterior = inicio;
+        Nodo siguiente = null;
+        // Recorre el nodo
+        while(anterior.getEnlace()!=null) {
+            if (anterior.getAge() == referencia) {
+                siguiente = anterior.getEnlace();
+                edadEncontrada = true;
+                break;
+            }
+            anterior = anterior.getEnlace();
+        }
+        
+        if (edadEncontrada) {
+            anterior.setEnlace(nuevo);
+            nuevo.setEnlace(siguiente);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se encontró la edad ingresada.");
+        }
+        
+    }
+    
+    public void insertarEnPromedio(String nombre, int age, float averageGrade, float referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setName(nombre);
+        nuevo.setAge(age);
+        nuevo.setAverageGrade(averageGrade);
+        nuevo.setEnlace(null);
+        boolean promedioEncontrado = false;
+        Nodo anterior = inicio;
+        Nodo siguiente = null;
+        // Recorre el nodo
+        while(anterior.getEnlace()!=null) {
+            if (anterior.getAge() == referencia) {
+                siguiente = anterior.getEnlace();
+                promedioEncontrado = true;
+                break;
+            }
+            anterior = anterior.getEnlace();
+        }
+        
+        if (promedioEncontrado) {
+            anterior.setEnlace(nuevo);
+            nuevo.setEnlace(siguiente);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se encontró el promedio ingresado.");
+        }
+        
+    }
+    
     public void consultar() {
     
         // Ubicarme al nodo inicial para recorrer la lista
