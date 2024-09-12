@@ -4,6 +4,7 @@
 
 package com.mycompany.listasimple;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -290,13 +291,56 @@ public class ListaSimple {
         int cantidadNodos = getLongitud();
         int posicion = 0;
         String[] arrayNombres = new String[cantidadNodos];
-        while(inicial.getEnlace()!=null) {
+        while(inicial!=null) {
             arrayNombres[posicion] = inicial.getName();
             inicial = inicial.getEnlace();
+            posicion++;
         }
-        JOptionPane.showMessageDialog(null, arrayNombres.toString());
+        
+        // Tengo los nodos ordenados
+        Arrays.sort(arrayNombres);
+        JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
+        
+        // Algoritmo de busqueda
+        // if inicio = arrayNombres[0]
         
         
+        //Encontrar el primer nodo según el nombre
+        String nombreInicio = arrayNombres[0];
+        Nodo nuevoInicio = null;
+        inicial = inicio;        
+        while(inicial!=null) {
+            if (inicial.getName().equals(nombreInicio)) {
+                nuevoInicio = inicial;
+                break;
+            }
+            inicial = inicial.getEnlace();
+        }
+        
+        JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
+        
+        //Encontrar los siguientes
+        inicial = inicio;
+        posicion = 1;
+        Nodo temporal = null;
+        for (int i = 1; i < cantidadNodos; i++) {
+            while(inicial!=null) {
+                if (inicial.getName().equals(arrayNombres[i])) {
+                    
+                    temporal = nuevoInicio;
+                    for (int j = 1; j < i; j++) {
+                        temporal = temporal.getEnlace();
+                    }
+                    temporal.setEnlace(inicial);
+                    continue;
+                }
+                inicial = inicial.getEnlace();
+            }
+        }
+        temporal.setEnlace(null);
+        JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
+        
+        inicio = nuevoInicio;
     
     }
     
