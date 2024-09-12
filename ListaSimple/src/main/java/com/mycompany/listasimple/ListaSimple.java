@@ -278,6 +278,40 @@ public class ListaSimple {
         
     }
     
+    public void ordenarEnOrden() {
+                    
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista està vacia");
+            return;
+        }
+        
+        // Recorrer los nodos        
+        Nodo inicial = inicio;
+        int cantidadNodos = getLongitud();
+        int posicion = 0;
+        String[] arrayNombres = new String[cantidadNodos];
+        while(inicial.getEnlace()!=null) {
+            arrayNombres[posicion] = inicial.getName();
+            inicial = inicial.getEnlace();
+        }
+        JOptionPane.showMessageDialog(null, arrayNombres.toString());
+        
+        
+    
+    }
+    
+    public int getLongitud() {
+        Nodo temporal = inicio;
+        int cantidad = 0;
+        if (inicio != null) {        
+            do {
+            cantidad++;
+            temporal = temporal.getEnlace();
+            } while (temporal!=null);
+        }
+        return cantidad;
+    }
+    
     public void consultar() {
     
         // Ubicarme al nodo inicial para recorrer la lista
@@ -292,6 +326,8 @@ public class ListaSimple {
             temporal = temporal.getEnlace();
             } while (temporal!=null);
         }
+        
+        JOptionPane.showMessageDialog(null, "Hay "+getLongitud()+" nodo(s) en la lista.");
     
     }
 }
