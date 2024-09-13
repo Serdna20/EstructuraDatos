@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class ListaSimple {
     
     Nodo inicio;
+    int longitud;
     ListaSimple() {
         inicio = null;
     }
@@ -353,6 +354,49 @@ public class ListaSimple {
         long finishTime = new Date().getTime();
         JOptionPane.showMessageDialog(null, "Esta acción tardó "+ (finishTime-startTime) +" milisegundos en realizarse");
     }
+    
+    public void ordenarEnOrden2() {
+    }
+    
+    //SACADO DE INTERNET
+    
+    public int stringCompare(String str1, String str2) { 
+        for (int i = 0; i < str1.length() && i < str2.length(); i++) { 
+            if ((int)str1.charAt(i) == (int)str2.charAt(i)) { 
+                continue; 
+            } 
+            else { 
+                return (int)str1.charAt(i) - (int)str2.charAt(i); 
+            } 
+        }
+        
+        if (str1.length() < str2.length()) { 
+            return (str1.length()-str2.length()); 
+        } 
+        else if (str1.length() > str2.length()) { 
+            return (str1.length()-str2.length()); 
+        } 
+        
+        else { 
+            return 0; 
+        } 
+    }
+    
+    public boolean returnAction(int indicador) {
+        if (indicador<=0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    
+    public void swapNodes(Nodo nodo1, Nodo nodo2) {
+        Nodo nodoTemp1 = nodo1;
+        Nodo nodoTemp2 = nodo2;
+    }
+    
+    //LOL
     
     public int getLongitud() {
         Nodo temporal = inicio;
