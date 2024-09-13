@@ -5,6 +5,8 @@
 package com.mycompany.listasimple;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -285,7 +287,7 @@ public class ListaSimple {
     }
     
     public void ordenarEnOrden() {
-                    
+        long startTime = new Date().getTime();
         if (inicio == null) {
             JOptionPane.showMessageDialog(null, "La lista està vacia");
             return;
@@ -304,7 +306,7 @@ public class ListaSimple {
         
         // Tengo los nodos ordenados
         Arrays.sort(arrayNombres);
-        JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
+        //JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
         
         // Algoritmo de busqueda
         // if inicio = arrayNombres[0]
@@ -348,6 +350,8 @@ public class ListaSimple {
             }
         }        
         inicio = nuevoInicio;
+        long finishTime = new Date().getTime();
+        JOptionPane.showMessageDialog(null, "Esta acción tardó "+ (finishTime-startTime) +" milisegundos en realizarse");
     }
     
     public int getLongitud() {
@@ -379,5 +383,20 @@ public class ListaSimple {
         
         JOptionPane.showMessageDialog(null, "Hay "+getLongitud()+" nodo(s) en la lista.");
     
+    }
+    
+    public void llenarAlAzar(int cantidad) {
+        Random random = new Random();
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        for (int i = 0; i < cantidad; i++) {
+            String nombre = "";
+            int longitud = random.nextInt(4)+2;
+            for (int j = 0; j < longitud; j++) {
+                nombre += alphabet.charAt(random.nextInt(alphabet.length()));
+            }
+            int age = random.nextInt(20)+1;
+            float averageGrade = random.nextFloat(4)+1;
+            insertarInicio(nombre, age, averageGrade);
+        }
     }
 }

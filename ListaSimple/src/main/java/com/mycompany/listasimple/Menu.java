@@ -49,6 +49,7 @@ public class Menu extends javax.swing.JFrame {
         deleteIndex = new javax.swing.JButton();
         deleteName = new javax.swing.JButton();
         orderButton = new javax.swing.JButton();
+        fillButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +166,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        fillButton.setText("Llenar al azar");
+        fillButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fillButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,10 +195,13 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(orderButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(beforeIndexButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(beforeIndexButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fillButton))
                             .addComponent(deleteIndex)
                             .addComponent(deleteName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(ageButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -213,7 +224,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(createList, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(insertFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(consult, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 58, Short.MAX_VALUE))
+                .addGap(0, 89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +260,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(indiceButton)
-                    .addComponent(beforeIndexButton))
+                    .addComponent(beforeIndexButton)
+                    .addComponent(fillButton))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,6 +364,10 @@ public class Menu extends javax.swing.JFrame {
         objLista.ordenarEnOrden();
     }//GEN-LAST:event_orderButtonActionPerformed
 
+    private void fillButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fillButtonActionPerformed
+        objLista.llenarAlAzar(validateIntInput(JOptionPane.showInputDialog("Ingrese la cantidad de nodos a agregar:")));
+    }//GEN-LAST:event_fillButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -416,6 +432,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton createList;
     private javax.swing.JButton deleteIndex;
     private javax.swing.JButton deleteName;
+    private javax.swing.JButton fillButton;
     private javax.swing.JButton indiceButton;
     private javax.swing.JButton insertFinal;
     private javax.swing.JLabel jLabel1;
