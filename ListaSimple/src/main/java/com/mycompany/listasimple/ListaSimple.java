@@ -130,6 +130,11 @@ public class ListaSimple {
     }
     
     public void eliminarIndice(int indice) {
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista está vacia");
+            return;
+        } 
+        
         int posicion = 1;
         boolean indiceEncontrado = false;
         
@@ -308,40 +313,41 @@ public class ListaSimple {
         //Encontrar el primer nodo según el nombre
         String nombreInicio = arrayNombres[0];
         Nodo nuevoInicio = null;
-        inicial = inicio;        
+        inicial = inicio;
+        posicion = 1;
         while(inicial!=null) {
             if (inicial.getName().equals(nombreInicio)) {
                 nuevoInicio = inicial;
+                eliminarIndice(posicion);
                 break;
             }
             inicial = inicial.getEnlace();
-        }
+            posicion++;
+        }        
         
-        JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
-        
-        //Encontrar los siguientes
-        inicial = inicio;
-        posicion = 1;
-        Nodo temporal = null;
+        // Cicla cantidad de nodos veces - 1
         for (int i = 1; i < cantidadNodos; i++) {
+            inicial = inicio;
+            // Cicla hasta encontrar el nodo
+            posicion = 1;
             while(inicial!=null) {
                 if (inicial.getName().equals(arrayNombres[i])) {
-                    
-                    temporal = nuevoInicio;
+                    Nodo temporal = nuevoInicio;
+                    // Llega a la posición necesaria para establecer el enlace
                     for (int j = 1; j < i; j++) {
-                        temporal = temporal.getEnlace();
+                        temporal = temporal.getEnlace();                        
                     }
                     temporal.setEnlace(inicial);
-                    continue;
+                    // Elimina al nodo de la lista original para
+                    // no confundir nombres repetidos
+                    eliminarIndice(posicion);
+                    break;
                 }
+                posicion++;
                 inicial = inicial.getEnlace();
             }
-        }
-        temporal.setEnlace(null);
-        JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
-        
+        }        
         inicio = nuevoInicio;
-    
     }
     
     public int getLongitud() {
