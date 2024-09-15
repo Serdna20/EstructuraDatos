@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class ListaSimple {
     
     Nodo inicio;
-    int longitud;
+    int longitud = 0;
     ListaSimple() {
         inicio = null;
     }
@@ -36,6 +36,7 @@ public class ListaSimple {
             nuevo.setEnlace(inicio);
             inicio = nuevo;
         }
+        longitud++;
     }
     
     public void insertarFinal(String nombre, int age, float averageGrade) {
@@ -57,6 +58,7 @@ public class ListaSimple {
             }
             temporal.setEnlace(nuevo);
         }
+        longitud++;
     }
     
     public void insertarEnIndice(String nombre, int age, float averageGrade, int indice) {
@@ -86,6 +88,7 @@ public class ListaSimple {
             if (indiceEncontrado) {
                 anterior.setEnlace(nuevo);
                 nuevo.setEnlace(siguiente);
+                longitud++;
             }
             else {
                 JOptionPane.showMessageDialog(null, "No se encontró el indice ingresado.");
@@ -125,6 +128,7 @@ public class ListaSimple {
             if (indiceEncontrado) {
                 anterior.setEnlace(nuevo);
                 nuevo.setEnlace(siguiente);
+                longitud++;
             }
             else {
                 JOptionPane.showMessageDialog(null, "No se encontró el indice ingresado.");
@@ -146,6 +150,7 @@ public class ListaSimple {
         
         if (indice == 1) {
             inicio = inicio.getEnlace();
+            longitud--;
             return;
         }
         
@@ -159,6 +164,7 @@ public class ListaSimple {
             posicion++;
         }
         if (indiceEncontrado) {
+            longitud--;
             anterior.setEnlace(siguiente);
         }
         else {
@@ -186,6 +192,7 @@ public class ListaSimple {
                 while(enlaceTemporal!=null && enlaceTemporal.getName().equals(referencia)) {
                     enlaceTemporal = enlaceTemporal.getEnlace();
                 }
+                longitud--;
                 anterior.setEnlace(enlaceTemporal);
             }
             
@@ -222,6 +229,7 @@ public class ListaSimple {
         if (nombreEncontrado) {
             anterior.setEnlace(nuevo);
             nuevo.setEnlace(siguiente);
+            longitud++;
         }
         else {
             JOptionPane.showMessageDialog(null, "No se encontró el nombre ingresado.");
@@ -251,6 +259,7 @@ public class ListaSimple {
         if (edadEncontrada) {
             anterior.setEnlace(nuevo);
             nuevo.setEnlace(siguiente);
+            longitud++;
         }
         else {
             JOptionPane.showMessageDialog(null, "No se encontró la edad ingresada.");
@@ -280,6 +289,7 @@ public class ListaSimple {
         if (promedioEncontrado) {
             anterior.setEnlace(nuevo);
             nuevo.setEnlace(siguiente);
+            longitud++;
         }
         else {
             JOptionPane.showMessageDialog(null, "No se encontró el promedio ingresado.");
@@ -289,6 +299,9 @@ public class ListaSimple {
     
     public void ordenarEnOrden() {
         long startTime = new Date().getTime();
+        if (getLongitud() < 2){
+            return;
+        }
         if (inicio == null) {
             JOptionPane.showMessageDialog(null, "La lista està vacia");
             return;
@@ -355,31 +368,100 @@ public class ListaSimple {
         JOptionPane.showMessageDialog(null, "Esta acción tardó "+ (finishTime-startTime) +" milisegundos en realizarse");
     }
     
-    public void ordenarEnOrden2() {
+    public void ordenarEnOrdenO() {
+        if (getLongitud() < 2){
+            return;
+        }
+        
+        long startTime = new Date().getTime();
+        // Simple list length + initiate array
+        int n = getLongitud();
+        Nodo[] arreglo = new Nodo[n];
+        int[] arregloNumerico = new int[n];
+                
+        // Fill the array
+        Nodo temporal = inicio;
+        int placement = 0;
+        
+        // PRIMER O(N)
+        do {
+            arreglo[placement] = temporal;
+            arregloNumerico[placement] = stringValue(temporal.getName());
+            placement++;
+            temporal = temporal.getEnlace();
+        } while (temporal!=null);
+                
+        quickSort(arregloNumerico, arreglo, 0, n - 1);
+        
+        
+        
+        inicio = arreglo[0];
+        inicio.setEnlace(arreglo[1]);
+        for (int i = 1; i < arreglo.length-1; i++) {
+            arreglo[i].setEnlace(arreglo[i+1]);            
+        }
+        arreglo[arreglo.length-1].setEnlace(null);
+        
+        long finishTime = new Date().getTime();
+        JOptionPane.showMessageDialog(null, "Esta acción tardó "+ (finishTime-startTime) +" milisegundos en realizarse");    
+    }
+    
+    static void quickSort(int[] arr, Nodo[] arrNodo, int low, int high)
+    {
+        if (low < high) {
+
+            // pi is partitioning index, arr[p]
+            // is now at right place
+            int pi = partition(arr, arrNodo, low, high);
+
+            // Separately sort elements before
+            // partition and after partition
+            quickSort(arr, arrNodo, low, pi - 1);
+            quickSort(arr, arrNodo, pi + 1, high);
+        }
+    }
+    
+    static int partition(int[] arr, Nodo[] arrNodo, int low, int high) {
+        // Choosing the pivot
+        int pivot = arr[high];
+
+        // Index of smaller element and indicates
+        // the right position of pivot found so far
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++) {
+
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot) {
+
+                // Increment index of smaller element
+                i++;
+                swap(arr, arrNodo, i, j);
+            }
+        }
+        swap(arr, arrNodo,  i + 1, high);
+        return (i + 1);
+    }
+    
+    static void swap(int[] arr, Nodo[] arrNodo, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        
+        Nodo temporal = arrNodo[i];
+        arrNodo[i] = arrNodo[j];
+        arrNodo[j] = temporal;
     }
     
     //SACADO DE INTERNET
     
-    public int stringCompare(String str1, String str2) { 
-        for (int i = 0; i < str1.length() && i < str2.length(); i++) { 
-            if ((int)str1.charAt(i) == (int)str2.charAt(i)) { 
-                continue; 
-            } 
-            else { 
-                return (int)str1.charAt(i) - (int)str2.charAt(i); 
-            } 
+    public int stringValue(String str1) {
+        int value = 0;
+        for (int i = 0; i < str1.length(); i++) {
+            value += (int) str1.charAt(i);
         }
-        
-        if (str1.length() < str2.length()) { 
-            return (str1.length()-str2.length()); 
-        } 
-        else if (str1.length() > str2.length()) { 
-            return (str1.length()-str2.length()); 
-        } 
-        
-        else { 
-            return 0; 
-        } 
+        return value;
     }
     
     public boolean returnAction(int indicador) {
@@ -399,15 +481,7 @@ public class ListaSimple {
     //LOL
     
     public int getLongitud() {
-        Nodo temporal = inicio;
-        int cantidad = 0;
-        if (inicio != null) {        
-            do {
-            cantidad++;
-            temporal = temporal.getEnlace();
-            } while (temporal!=null);
-        }
-        return cantidad;
+        return longitud;
     }
     
     public void consultar() {
