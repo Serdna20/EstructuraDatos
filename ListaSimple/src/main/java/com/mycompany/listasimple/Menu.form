@@ -25,58 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="orderButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="beforeIndexButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="fillButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="deleteIndex" min="-2" max="-2" attributes="0"/>
-                                  <Component id="deleteName" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="ageButton" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="nombreButton" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
-                                      <Component id="indiceButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="averageButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel2" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" pref="117" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="ageField" alignment="0" pref="137" max="32767" attributes="0"/>
-                                      <Component id="averageField" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="nombreField" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="createList" min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="insertFinal" min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="consult" min="-2" pref="117" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="89" max="32767" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -88,9 +37,59 @@
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                      <Component id="oldSort" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="bubbleSort" min="-2" max="-2" attributes="0"/>
+                          <Component id="orderButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="oldSort" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="deleteIndex" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="beforeIndexButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="deleteName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="fillButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="ageButton" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                                      <Component id="nombreButton" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                                      <Component id="indiceButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="averageButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel2" max="32767" attributes="0"/>
+                                      <Component id="jLabel3" max="32767" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" pref="117" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="ageField" alignment="0" pref="137" max="32767" attributes="0"/>
+                                          <Component id="averageField" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="nombreField" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="createList" min="-2" pref="117" max="-2" attributes="0"/>
+                                      <Component id="insertFinal" min="-2" pref="117" max="-2" attributes="0"/>
+                                      <Component id="consult" min="-2" pref="117" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -100,15 +99,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="oldSort" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="orderButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -160,7 +153,13 @@
                       <Component id="deleteName" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="oldSort" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="bubbleSort" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <Component id="orderButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -319,6 +318,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="oldSortActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bubbleSort">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ordenar Burbuja"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bubbleSortActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

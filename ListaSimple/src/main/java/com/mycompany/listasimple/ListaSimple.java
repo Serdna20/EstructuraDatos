@@ -406,6 +406,71 @@ public class ListaSimple {
         JOptionPane.showMessageDialog(null, "Esta acción tardó "+ (finishTime-startTime) +" milisegundos en realizarse");    
     }
     
+    public void ordenarBubbleSort() {
+        // ---------------------------------------------- //
+        
+        if (getLongitud() < 2){
+            return;
+        }
+        
+        // ---------------------------------------------- //
+        
+        long startTime = new Date().getTime();        
+        
+        // ---------------------------------------------- //
+        
+        int n = getLongitud();
+        Nodo[] arreglo = new Nodo[n];
+        int[] arregloNumerico = new int[n];
+        
+        Nodo temporal = inicio;
+        int placement = 0;
+        
+        do {
+            arreglo[placement] = temporal;
+            arregloNumerico[placement] = stringValue(temporal.getName());
+            placement++;
+            temporal = temporal.getEnlace();
+        } while (temporal!=null);
+        
+        // ---------------------------------------------- //  
+        
+        for (int i = 0; i < n-1; i++) {
+            
+            for (int j = 0; j < n-1; j++) {
+                
+                if (arregloNumerico[j] > arregloNumerico[j + 1]) {
+                    
+                    // Swap arr[j] and arr[j+1]
+                    int temp = arregloNumerico[j];
+                    arregloNumerico[j] = arregloNumerico[j + 1];
+                    arregloNumerico[j + 1] = temp;
+                    
+                    Nodo temporalCambio = arreglo[i];
+                    arreglo[i] = arreglo[j];
+                    arreglo[j] = temporalCambio;
+                    
+                }
+                
+            }
+            
+        }
+        
+        inicio = arreglo[0];
+        inicio.setEnlace(arreglo[1]);
+        for (int i = 1; i < arreglo.length-1; i++) {
+            arreglo[i].setEnlace(arreglo[i+1]);            
+        }
+        arreglo[arreglo.length-1].setEnlace(null);
+        
+        // ---------------------------------------------- //
+        
+        long finishTime = new Date().getTime();
+        JOptionPane.showMessageDialog(null, "Esta acción tardó "+ (finishTime-startTime) +" milisegundos en realizarse");  
+        
+        // ---------------------------------------------- //
+    }
+    
     static void quickSort(int[] arr, Nodo[] arrNodo, int low, int high)
     {
         if (low < high) {
