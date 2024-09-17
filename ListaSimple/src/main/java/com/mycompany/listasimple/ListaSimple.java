@@ -513,7 +513,7 @@ public class ListaSimple {
                 nombre += alphabet.charAt(random.nextInt(alphabet.length()));
             }
             int age = random.nextInt(20)+1;
-            float averageGrade = random.nextFloat(4)+1;
+            float averageGrade = random.nextFloat() * 5;
             insertarInicio(nombre, age, averageGrade);
         }
     }
