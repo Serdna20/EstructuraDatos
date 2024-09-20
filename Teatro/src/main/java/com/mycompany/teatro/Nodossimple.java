@@ -34,11 +34,11 @@ public class Nodossimple {
         this.nboletas = nboletas;
     }
     
-    public Nodoscirculares getSiguiente() {
+    public Nodossimple getSiguiente() {
         return siguiente;
     }
     
-    public void setSiguiente(Nodoscirculares siguiente) {
+    public void setSiguiente(Nodossimple siguiente) {
         this.siguiente = siguiente;
     }    
     
@@ -47,7 +47,7 @@ public class Nodossimple {
     private String genero;    
     private int nboletas;
     
-    private Nodoscirculares siguiente;
+    private Nodossimple siguiente;
     
     
 }

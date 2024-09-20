@@ -70,6 +70,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton2.setText("Listado de boletas vendidas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Consultar por documento");
 
@@ -135,8 +140,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_numeroActionPerformed
 
     private void atenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atenderActionPerformed
-        int nuboletas = Integer.parseInt(JOptionPane.showInputDialog(" Diga el numero de boletas a comprar "));            
+        String message = objlista.atender(numeroboletas);
+        
+        JOptionPane.showMessageDialog(null, message);    
     }//GEN-LAST:event_atenderActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        objlista.consultarVendidas();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
