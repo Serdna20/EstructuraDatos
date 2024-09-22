@@ -137,16 +137,60 @@ public class Teatro {
     public void consultarVendidas(){
         Nodossimple temporal=registroInicio;
         
+        int cantidadHombre = 0;
+        int cantidadMujer = 0;
+        
         if (registroInicio==null){    
             JOptionPane.showMessageDialog(null, "La lista esta vacia");
         }
         else {
             do{       
                 JOptionPane.showMessageDialog(null,
-                "Documento "+temporal.getDocumento()+" Nombre " + temporal.getNombre() +" Genero "+ temporal.getGenero()+" #Boletas "+temporal.getNboletas());
+                "Documento: "+temporal.getDocumento()+"\n"+
+                "Nombre: " + temporal.getNombre()+"\n"+
+                "Genero: "+ temporal.getGenero()+"\n"+
+                "Boletas compradas: "+temporal.getNboletas());
+                
+                if (temporal.getGenero().equals("hombre")) {
+                    cantidadHombre = cantidadHombre + temporal.getNboletas();
+                } else {
+                    cantidadMujer = cantidadMujer + temporal.getNboletas();
+                }
+                
                 temporal=temporal.getSiguiente();       
             } while (temporal!=null);
+            
+            int cantidadTotal = cantidadHombre + cantidadMujer;   
+            
+            JOptionPane.showMessageDialog(null,
+                    "Se vendieron "+cantidadTotal+" boletas en total."+"\n"+
+                    "Los hombres compraron "+cantidadHombre+" boletas. ("+returnPercentage(cantidadTotal, cantidadHombre)+")"+"\n"+
+                    "Las mujeres compraron "+cantidadMujer+" boletas. ("+returnPercentage(cantidadTotal, cantidadMujer)+")");
+            
         } 
     }
+    
+    public void consultarDocumento(String documento) {
+        
+        Nodossimple temporal=registroInicio;
+        boolean encontrado = false;
+        do{       
+            if (temporal.getDocumento().equals(documento)) {
+                encontrado = true;
+                JOptionPane.showMessageDialog(null,
+                "El documento "+documento+" ha comprado "+temporal.getNboletas()+" boletas.");
+                break;
+            }
+            temporal=temporal.getSiguiente();
+        } while (temporal!=null);
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,
+            "El documento "+documento+" no ha comprado boletas.");
+        }
+    }
+    
+    public String returnPercentage(int total, int porcion) {
+        return String.format("%.1f", (double) porcion*100/total)+"%";
+    } 
     
 }

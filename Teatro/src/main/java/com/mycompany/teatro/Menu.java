@@ -77,6 +77,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton3.setText("Consultar por documento");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,7 +133,10 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarActionPerformed
-        objlista.solicitarTurno(JOptionPane.showInputDialog(" Nombre "), JOptionPane.showInputDialog(" Documento "), JOptionPane.showInputDialog(" Genero "));
+        objlista.solicitarTurno(
+                JOptionPane.showInputDialog(" Nombre "),
+                validateIntInput(JOptionPane.showInputDialog(" Documento ")),
+                  validarGenero());
     }//GEN-LAST:event_solicitarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -149,6 +157,44 @@ public class Menu extends javax.swing.JFrame {
         objlista.consultarVendidas();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        objlista.consultarDocumento(validateIntInput(JOptionPane.showInputDialog(" Documento ")));
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    public String validarGenero() {
+        String genero;
+        do {
+
+            genero = JOptionPane.showInputDialog("Genero (Hombre o Mujer)");
+            genero = genero.toLowerCase();
+            
+            if (genero.equals("hombre") || genero.equals("mujer")) {
+                break;
+            }
+            
+        } while (true);
+        return genero;
+    }
+    
+    private String validateIntInput(String str) {
+        while (isNumber(str)==false) {
+            str = JOptionPane.showInputDialog("Ingrese su documento, número ENTERO válido (sin espacios):");
+        }
+        return str;
+    }
+    
+    private static boolean isNumber(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
