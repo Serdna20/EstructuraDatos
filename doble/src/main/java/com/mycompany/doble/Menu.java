@@ -30,6 +30,8 @@ public class Menu extends javax.swing.JFrame {
         printValues = new javax.swing.JButton();
         insertStart = new javax.swing.JButton();
         insertFinal = new javax.swing.JButton();
+        beforeAfterButton = new javax.swing.JButton();
+        insertBeforeIndex = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,39 +56,66 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        beforeAfterButton.setText("Atrás/Adelante");
+        beforeAfterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                beforeAfterButtonActionPerformed(evt);
+            }
+        });
+
+        insertBeforeIndex.setText("Insertar en indice");
+        insertBeforeIndex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertBeforeIndexActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(printValues)
+                .addGap(39, 39, 39))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(insertFinal))
-                    .addComponent(insertStart)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(insertBeforeIndex))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(printValues)))
-                .addContainerGap(267, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(beforeAfterButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(insertStart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                        .addComponent(insertFinal)))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(insertStart)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(insertFinal)
-                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insertStart)
+                    .addComponent(insertFinal))
+                .addGap(26, 26, 26)
+                .addComponent(insertBeforeIndex)
+                .addGap(18, 18, 18)
+                .addComponent(beforeAfterButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(printValues)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void insertStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertStartActionPerformed
-        listaDoble.insertarInicio(JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: "));
+        listaDoble.insertarInicio(
+                JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: "),
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese la edad de la persona: ")));
     }//GEN-LAST:event_insertStartActionPerformed
 
     private void printValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printValuesActionPerformed
@@ -94,8 +123,21 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_printValuesActionPerformed
 
     private void insertFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertFinalActionPerformed
-        listaDoble.insertarFinal(JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: "));
+        listaDoble.insertarFinal(
+                JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: "),
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese la edad de la persona: ")));
     }//GEN-LAST:event_insertFinalActionPerformed
+
+    private void beforeAfterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beforeAfterButtonActionPerformed
+        listaDoble.delanteAtrás(Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese el indice: ")));
+    }//GEN-LAST:event_beforeAfterButtonActionPerformed
+
+    private void insertBeforeIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertBeforeIndexActionPerformed
+        listaDoble.insertarPorIndice(
+                JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: "), 
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese la edad de la persona: ")), 
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese el indice: ")));
+    }//GEN-LAST:event_insertBeforeIndexActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +175,8 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton beforeAfterButton;
+    private javax.swing.JButton insertBeforeIndex;
     private javax.swing.JButton insertFinal;
     private javax.swing.JButton insertStart;
     private javax.swing.JButton printValues;

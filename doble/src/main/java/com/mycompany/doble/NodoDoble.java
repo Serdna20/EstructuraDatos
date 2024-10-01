@@ -2,6 +2,14 @@ package com.mycompany.doble;
 
 public class NodoDoble {
     
+    public int getEdad() {
+        return edad;
+    }
+    
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
     public NodoDoble getAnterior() {
         return anterior;
     }
@@ -10,12 +18,12 @@ public class NodoDoble {
         this.anterior = anterior;
     }
     
-    public String getDato() {
-        return dato;
+    public String getNombre() {
+        return nombre;
     }
     
-    public void setDato(String dato) {
-        this.dato = dato;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     public NodoDoble getSiguiente() {
@@ -27,7 +35,8 @@ public class NodoDoble {
     }
     
     private NodoDoble anterior;
-    private String dato;
+    private String nombre;
+    private int edad;
     private NodoDoble siguiente;
     
      

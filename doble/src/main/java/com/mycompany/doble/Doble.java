@@ -17,12 +17,13 @@ public class Doble {
         inicio = null;
     }
     
-    public void insertarInicio(String dato) {
+    public void insertarInicio(String dato, int edad) {
         
         NodoDoble nuevo = new NodoDoble();
         nuevo.setAnterior(null);
         nuevo.setSiguiente(null);
-        nuevo.setDato(dato);
+        nuevo.setNombre(dato);
+        nuevo.setEdad(edad);
         
         if (inicio != null) {
             nuevo.setSiguiente(inicio);
@@ -31,12 +32,13 @@ public class Doble {
         inicio = nuevo;
     }
     
-    public void insertarFinal(String dato) {
+    public void insertarFinal(String dato, int edad) {
         
         NodoDoble nuevo = new NodoDoble();
         nuevo.setAnterior(null);
         nuevo.setSiguiente(null);
-        nuevo.setDato(dato);
+        nuevo.setNombre(dato);
+        nuevo.setEdad(edad);
         
         if (inicio == null) {
             inicio = nuevo;           
@@ -52,23 +54,59 @@ public class Doble {
     
     // Insertar por indice adelante y atras, eliminar por dato, buscar, actualizar nodo
     
-    public void insertarPorIndice(String dato, int index) {
+    public void insertarPorIndice(String dato, int edad, int index) {
         
         NodoDoble nuevo = new NodoDoble();
         nuevo.setAnterior(null);
         nuevo.setSiguiente(null);
-        nuevo.setDato(dato);
+        nuevo.setNombre(dato);
         
         if (inicio == null) {
-            inicio = nuevo;           
-        } else {
-            NodoDoble ultimo = inicio;
-            while (ultimo.getSiguiente() != null) {
-                ultimo = ultimo.getSiguiente();
-            }
-            ultimo.setSiguiente(nuevo);
-            nuevo.setAnterior(ultimo);
-        }        
+            JOptionPane.showMessageDialog(null, "La lista està vacia");
+            return;
+        }
+        
+        if (index < 0 || index > getLongitud()) {
+            JOptionPane.showMessageDialog(null, "Fuera de los bordes");
+            return;
+        }
+        
+        // Validamos que la index sea posible
+        
+        if (index == 1) {
+            insertarInicio(dato, edad);
+            return;
+        }
+        
+        if (index == getLongitud()) {
+            insertarFinal(dato, edad);
+            return;
+        }
+        
+        NodoDoble anterior;
+        NodoDoble siguiente;
+        
+        int posicion = 1;
+        NodoDoble temporal = inicio;
+        while (temporal != null && posicion != index) {
+                temporal = temporal.getSiguiente();
+                posicion++;
+        }
+        JOptionPane.showMessageDialog(null, "Datos: "+temporal.getNombre());
+        anterior = temporal.getAnterior();
+        siguiente = temporal;
+        
+        if (anterior != null) {
+            anterior.setSiguiente(nuevo);
+        }
+        
+        if (siguiente != null) {
+            siguiente.setAnterior(nuevo);
+        }
+        
+        nuevo.setSiguiente(siguiente);
+        nuevo.setAnterior(anterior);
+           
     }
     
     public void imprimir() {
@@ -77,11 +115,51 @@ public class Doble {
             JOptionPane.showMessageDialog(null, "La lista está vacia");
         } else {
             while (temporal != null) {                
-                JOptionPane.showMessageDialog(null, "Datos: "+temporal.getDato());
+                JOptionPane.showMessageDialog(null, "Datos: "+temporal.getNombre());
                 temporal = temporal.getSiguiente();
+            }
+        }        
+    }
+    
+    public int getLongitud() {
+        int longitud = 0;
+        NodoDoble temporal = inicio;
+        while (temporal != null) {
+                temporal = temporal.getSiguiente();
+                longitud++;
+        }
+        return longitud;
+    }
+    
+    public void delanteAtrás(int index) {
+        
+        int posicion = 1;
+        NodoDoble temporal = inicio;
+        while (temporal != null && posicion != index) {
+                temporal = temporal.getSiguiente();
+                posicion++;
+        }
+        
+        String nombreAnterior = "nulo / nadie";
+        String nombreAdelante = "nulo / nadie";
+        
+        if (temporal != null) {
+            if (temporal.getAnterior() == null) {
+                nombreAnterior = "nulo / nadie";
+            } else {
+                nombreAnterior = temporal.getAnterior().getNombre();
+            }
+
+            if (temporal.getSiguiente() == null) {
+                nombreAdelante = "nulo / nadie";
+            } else {
+                nombreAdelante = temporal.getSiguiente().getNombre();
             }
         }
         
+        JOptionPane.showMessageDialog(null, "Por detrás: "+nombreAnterior);
+        JOptionPane.showMessageDialog(null, "Por delante: "+nombreAdelante);
+        // JOptionPane.showMessageDialog(null, getLongitud());
     }
     
 }
