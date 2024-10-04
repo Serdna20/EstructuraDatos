@@ -33,6 +33,7 @@ public class Menu extends javax.swing.JFrame {
         beforeAfterButton = new javax.swing.JButton();
         insertBeforeIndex = new javax.swing.JButton();
         removeMinors = new javax.swing.JButton();
+        printAdults = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +79,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        printAdults.setText("Imprimir mayores");
+        printAdults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printAdultsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,14 +104,16 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                         .addComponent(insertFinal)))
                 .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(258, 258, 258)
-                .addComponent(removeMinors)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(printValues)
                 .addGap(45, 45, 45))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(258, 258, 258)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(printAdults)
+                    .addComponent(removeMinors))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +128,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(beforeAfterButton)
                 .addGap(18, 18, 18)
                 .addComponent(removeMinors)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(printAdults)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(printValues)
                 .addGap(34, 34, 34))
         );
@@ -156,6 +168,10 @@ public class Menu extends javax.swing.JFrame {
     private void removeMinorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMinorsActionPerformed
         listaDoble.removerMenores();
     }//GEN-LAST:event_removeMinorsActionPerformed
+
+    private void printAdultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printAdultsActionPerformed
+        listaDoble.imprimirMayores();
+    }//GEN-LAST:event_printAdultsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,6 +213,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton insertBeforeIndex;
     private javax.swing.JButton insertFinal;
     private javax.swing.JButton insertStart;
+    private javax.swing.JButton printAdults;
     private javax.swing.JButton printValues;
     private javax.swing.JButton removeMinors;
     // End of variables declaration//GEN-END:variables

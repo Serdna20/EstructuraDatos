@@ -204,9 +204,24 @@ public class Doble {
                 arrayDoble[i+1].setAnterior(arrayDoble[i]);
                 arrayDoble[i+1].setSiguiente(null);
             }
-            
-            
-            
         }     
+    }
+    
+    public void imprimirMayores() {
+        NodoDoble temporal = inicio;
+        int index = 1;
+        if (inicio == null ) {
+            JOptionPane.showMessageDialog(null, "La lista está vacia");
+        } else {
+            while (temporal != null) {
+                boolean esMayor = temporal.getEdad() >= 18;                
+                if (esMayor) {
+                    JOptionPane.showMessageDialog(null, "Posicion: "+index+" - Datos: Nombre: "+temporal.getNombre()
+                    +" Edad: "+temporal.getEdad());                    
+                }
+                index++;
+                temporal = temporal.getSiguiente();
+            }
+        }        
     }
 }
