@@ -148,6 +148,11 @@ public class Doble {
     
     public void delanteAtrás(int index) {
         
+        if (index < 0 || index > getLongitud()) {
+            JOptionPane.showMessageDialog(null, "Index fuera de los límites");
+            return;
+        }
+        
         int posicion = 1;
         NodoDoble temporal = inicio;
         while (temporal != null && posicion != index) {
