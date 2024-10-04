@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
  * @author SCIS2-22
  */
 public class Doble {
+    
+    // IMPRIMIR MAYORES DE EDAD
 
     NodoDoble inicio = new NodoDoble();
     Doble() {
@@ -115,7 +117,8 @@ public class Doble {
             JOptionPane.showMessageDialog(null, "La lista está vacia");
         } else {
             while (temporal != null) {                
-                JOptionPane.showMessageDialog(null, "Datos: "+temporal.getNombre());
+                JOptionPane.showMessageDialog(null, "Datos: Nombre: "+temporal.getNombre()
+                +" Edad: "+temporal.getEdad());
                 temporal = temporal.getSiguiente();
             }
         }        
@@ -127,6 +130,18 @@ public class Doble {
         while (temporal != null) {
                 temporal = temporal.getSiguiente();
                 longitud++;
+        }
+        return longitud;
+    }
+    
+    public int getMenoresCantidad() {
+        int longitud = 0;
+        NodoDoble temporal = inicio;
+        while (temporal != null) {
+            if (temporal.getEdad() >= 18) {
+                longitud++;
+            }
+            temporal = temporal.getSiguiente();                
         }
         return longitud;
     }
@@ -162,4 +177,36 @@ public class Doble {
         // JOptionPane.showMessageDialog(null, getLongitud());
     }
     
+    public void removerMenores() {        
+        if (inicio == null ) {
+            JOptionPane.showMessageDialog(null, "La lista está vacia");
+        } else {
+            
+            // Nueva variable inicio
+            
+            NodoDoble[] arrayDoble = new NodoDoble[getMenoresCantidad()];
+            int index = 0;
+            NodoDoble temporal = inicio;
+            while (temporal != null) {
+                boolean esMayor = temporal.getEdad() >= 18;                
+                if (esMayor) {
+                    arrayDoble[index] = temporal;
+                    index++;
+                }                
+                temporal = temporal.getSiguiente();
+            }
+            
+            arrayDoble[0].setAnterior(null);
+            inicio = arrayDoble[0];
+            
+            for (int i = 0; i < arrayDoble.length-1; i++) {
+                arrayDoble[i].setSiguiente(arrayDoble[i+1]);
+                arrayDoble[i+1].setAnterior(arrayDoble[i]);
+                arrayDoble[i+1].setSiguiente(null);
+            }
+            
+            
+            
+        }     
+    }
 }
