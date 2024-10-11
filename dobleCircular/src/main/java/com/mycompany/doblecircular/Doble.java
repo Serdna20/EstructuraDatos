@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.doble;
+package com.mycompany.doblecircular;
 
 import javax.swing.JOptionPane;
 
@@ -22,76 +22,47 @@ public class Doble {
     public void insertarInicio(String dato, int edad) {
         
         NodoDoble nuevo = new NodoDoble();
-        nuevo.setAnterior(null);
-        nuevo.setSiguiente(null);
+        nuevo.setAnterior(nuevo);
+        nuevo.setSiguiente(nuevo);
         nuevo.setNombre(dato);
         nuevo.setEdad(edad);
         
-        if (inicio != null) {
-            nuevo.setSiguiente(inicio);
-            inicio.setAnterior(nuevo);            
+        if (inicio == null) {
+            inicio = nuevo;
         }
-        inicio = nuevo;
+        else {
+            NodoDoble last = inicio.getAnterior();
+            inicio.setAnterior(nuevo);
+            nuevo.setSiguiente(inicio);
+            last.setSiguiente(nuevo);
+            nuevo.setAnterior(last);            
+            inicio=nuevo;
+        }
+        
     }
     
     public void insertarFinal(String dato, int edad) {
         
         NodoDoble nuevo = new NodoDoble();
-        nuevo.setAnterior(null);
-        nuevo.setSiguiente(null);
+        nuevo.setAnterior(nuevo);
+        nuevo.setSiguiente(nuevo);
         nuevo.setNombre(dato);
         nuevo.setEdad(edad);
         
         if (inicio == null) {
-            inicio = nuevo;           
+            inicio = nuevo;
+            inicio.setAnterior(nuevo);
+            inicio.setSiguiente(nuevo);          
         } else {
-            NodoDoble ultimo = inicio;
-            while (ultimo.getSiguiente() != null) {
-                ultimo = ultimo.getSiguiente();
-            }
-            ultimo.setSiguiente(nuevo);
-            nuevo.setAnterior(ultimo);
+            NodoDoble last = inicio.getAnterior();
+            last.setSiguiente(nuevo);
+            nuevo.setAnterior(last);
+            nuevo.setSiguiente(inicio);
+            inicio.setAnterior(nuevo);
         }        
     }
     
     // Insertar por indice adelante y atras, eliminar por dato, buscar, actualizar nodo
-    
-    public void eliminarIndice(int index) {
-    
-        if (inicio == null) {
-            JOptionPane.showMessageDialog(null, "La lista està vacia");
-            return;
-        }
-        
-        if (index < 0 || index > getLongitud()) {
-            JOptionPane.showMessageDialog(null, "Fuera de los bordes");
-            return;
-        }
-        
-        NodoDoble anterior;
-        NodoDoble siguiente;
-        
-        int posicion = 1;
-        NodoDoble temporal = inicio;
-        while (temporal != null && posicion != index) {
-            temporal = temporal.getSiguiente();
-            posicion++;
-        }
-        anterior = temporal.getAnterior();
-        siguiente = temporal.getSiguiente();
-        
-        if (anterior == null) {
-            inicio = siguiente;
-        }
-        siguiente.setAnterior(anterior);
-        
-        if (siguiente == null) {
-        }
-        
-        
-        
-        
-    }
     
     public void insertarPorIndice(String dato, int edad, int index) {
         
@@ -153,11 +124,12 @@ public class Doble {
         if (inicio == null ) {
             JOptionPane.showMessageDialog(null, "La lista está vacia");
         } else {
-            while (temporal != null) {                
+            do {
                 JOptionPane.showMessageDialog(null, "Datos: Nombre: "+temporal.getNombre()
                 +" Edad: "+temporal.getEdad());
                 temporal = temporal.getSiguiente();
             }
+            while (temporal != inicio);
         }        
     }
     
