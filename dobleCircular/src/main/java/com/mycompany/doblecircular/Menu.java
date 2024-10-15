@@ -35,6 +35,10 @@ public class Menu extends javax.swing.JFrame {
         insertBeforeIndex = new javax.swing.JButton();
         removeMinors = new javax.swing.JButton();
         printAdults = new javax.swing.JButton();
+        insertAfterIndex = new javax.swing.JButton();
+        removeIndex = new javax.swing.JButton();
+        findNode = new javax.swing.JButton();
+        updateNode = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,34 +91,70 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        insertAfterIndex.setText("Insertar después de indice");
+        insertAfterIndex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertAfterIndexActionPerformed(evt);
+            }
+        });
+
+        removeIndex.setText("Remover indice");
+        removeIndex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeIndexActionPerformed(evt);
+            }
+        });
+
+        findNode.setText("Buscar indice");
+        findNode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findNodeActionPerformed(evt);
+            }
+        });
+
+        updateNode.setText("Actualizar nodo");
+        updateNode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateNodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(insertBeforeIndex))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(beforeAfterButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(insertStart)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                        .addComponent(insertFinal)))
-                .addGap(26, 26, 26))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(printValues)
-                .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
-                .addGap(258, 258, 258)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(printAdults)
-                    .addComponent(removeMinors))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(insertBeforeIndex)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(insertStart)
+                            .addComponent(insertFinal))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(removeIndex)
+                            .addComponent(removeMinors)
+                            .addComponent(updateNode))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(beforeAfterButton)
+                            .addComponent(findNode))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(printAdults)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(printValues)
+                                .addGap(29, 29, 29))))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(insertAfterIndex)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,18 +162,30 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(insertStart)
-                    .addComponent(insertFinal))
-                .addGap(26, 26, 26)
-                .addComponent(insertBeforeIndex)
+                    .addComponent(removeMinors))
                 .addGap(18, 18, 18)
-                .addComponent(beforeAfterButton)
-                .addGap(18, 18, 18)
-                .addComponent(removeMinors)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(printAdults)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(printValues)
-                .addGap(34, 34, 34))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insertFinal)
+                    .addComponent(removeIndex))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(printValues)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(printAdults)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(insertBeforeIndex)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(insertAfterIndex)
+                            .addComponent(updateNode))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(findNode)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(beforeAfterButton)
+                        .addGap(19, 19, 19))))
         );
 
         pack();
@@ -174,6 +226,31 @@ public class Menu extends javax.swing.JFrame {
         listaDoble.imprimirMayores();
     }//GEN-LAST:event_printAdultsActionPerformed
 
+    private void insertAfterIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertAfterIndexActionPerformed
+        listaDoble.insertarDespuesIndice(
+                JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: "), 
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese la edad de la persona: ")), 
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese el indice: ")));                                   
+    }//GEN-LAST:event_insertAfterIndexActionPerformed
+
+    private void removeIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeIndexActionPerformed
+        listaDoble.eliminarIndice(Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese el indice: ")));
+    }//GEN-LAST:event_removeIndexActionPerformed
+
+    private void findNodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findNodeActionPerformed
+        listaDoble.buscarNodo(
+                JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: ")
+        );
+    }//GEN-LAST:event_findNodeActionPerformed
+
+    private void updateNodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateNodeActionPerformed
+        listaDoble.actualizarNodo(
+                JOptionPane.showInputDialog(rootPane, "Ingrese el nombre de la persona: "), 
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese la edad de la persona: ")), 
+                Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Ingrese el indice: "))
+        );
+    }//GEN-LAST:event_updateNodeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -211,11 +288,15 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton beforeAfterButton;
+    private javax.swing.JButton findNode;
+    private javax.swing.JButton insertAfterIndex;
     private javax.swing.JButton insertBeforeIndex;
     private javax.swing.JButton insertFinal;
     private javax.swing.JButton insertStart;
     private javax.swing.JButton printAdults;
     private javax.swing.JButton printValues;
+    private javax.swing.JButton removeIndex;
     private javax.swing.JButton removeMinors;
+    private javax.swing.JButton updateNode;
     // End of variables declaration//GEN-END:variables
 }
